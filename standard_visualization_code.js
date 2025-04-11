@@ -1,3 +1,17 @@
+/********************************************************************************************************
+ * Version 1
+ * Description: This plugin facilitates the creation and linking of WorkItems in Polarion directly 
+ *              from Draw.io.
+ * Parameters: ProjectId - The source Project Id from where the WorkItems will be created and linked in 
+ *                         Draw.io.
+ * Change History:
+ * ******************************************************************************************************
+ * ------------------------------------------------------------------------------------------------------
+ * Sr No.      Date                 Author                              Version        Change Description
+ *  1          Apr-11-2025          Benish B M, Intelizign Dev Team        1            Initial Creation
+ * ------------------------------------------------------------------------------------------------------
+ *********************************************************************************************************/
+
 var currentURL = window.location.href;
 var queryString = window.location.search;
 var urlParams = new URLSearchParams(queryString);
@@ -21,7 +35,7 @@ if (_drawIoActionLocalStorage == "create") {
             var graph = editor.graph;
             mxEvent.disableContextMenu(document.body);
             const linkRoleDataArray = [
-                //Defining Linking Roles
+                // Defining Link Roles 
                 {
                     fromType: ["useStep", "userNeed", "function", "systemRequirement", "designRequirement", "designSpecification", "designOutput"],
                     toType: "VOC_VOB",
@@ -579,7 +593,7 @@ if (_drawIoActionLocalStorage == "create") {
         }
         return shapeArray[Math.abs(hash) % shapeArray.length];
     }
-
+    // Fetch All WorkItem Types For Respective Project Via Polarion Rest Api
     function getAllWorkItemTypes() {
         var wiTypes = [];
         var apiUrl = APIURL + "/enumerations/~/workitem-type/~";
